@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Portfolio of Charie M. Alegado">
+    <title>Charie M. Alegado | Personal Portfolio</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #080810;
+            --bg2: #10101c;
+            --card: rgba(255, 255, 255, 0.06);
+            --text: #ffffff;
+            --muted: #aaaaba;
+            --accent: #9d4edd;
+            --accent2: #c77dff;
+            --border: rgba(255, 255, 255, 0.12);
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Background */
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    circle at 10% 20%,
+                    rgba(157, 78, 221, 0.15),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 80%,
+                    rgba(199, 125, 255, 0.10),
+                    transparent 30%
+                ),
+                var(--bg);
+        }
+
+        .background span {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 1px solid rgba(199, 125, 255, 0.15);
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .background span:nth-child(1) {
+            top: 10%;
+            left: -150px;
+        }
+
+        .background span:nth-child(2) {
+            right: -150px;
+            top: 40%;
+            animation-delay: 2s;
+        }
+
+        .background span:nth-child(3) {
+            bottom: -180px;
+            left: 40%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(-30px) scale(1.1);
+            }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(8, 8, 16, 0.75);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .logo span,
+        .footer-logo span {
+            color: var(--accent2);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent2);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.7rem;
+            cursor: pointer;
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 50px;
+            padding-top: 100px;
+        }
+
+        .small-title {
+            color: var(--accent2);
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--accent2);
+        }
+
+        .hero h2 {
+            color: #ddd;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            color: var(--muted);
+            max-width: 650px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .primary {
+            color: white;
+            background: linear-gradient(
+                135deg,
+                var(--accent),
+                var(--accent2)
+            );
+            border: none;
+        }
+
+        .secondary {
+            border: 1px solid var(--accent);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(157, 78, 221, 0.25);
+        }
+
+        /* Profile */
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .profile-card {
+            width: 310px;
+            padding: 15px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            text-align: center;
+            transform: rotate(3deg);
+            transition: 0.5s;
+        }
+
+        .profile-card:hover {
+            transform: rotate(0deg) translateY(-10px);
+        }
+
+        .profile-img {
+            width: 280px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+            margin: auto;
+            background: #181827;
+        }
+
+        .profile-info {
+            padding: 20px 10px 10px;
+        }
+
+        .profile-info h3 {
+            font-size: 1.3rem;
+        }
+
+        .profile-info p {
+            color: var(--accent2);
+            font-size: 0.85rem;
+        }
+
+        .profile-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            filter: blur(100px);
+            opacity: 0.25;
+            z-index: -1;
+        }
+
+        /* Sections */
+        .section {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 120px 0;
+        }
+
+        .section-title {
+            margin-bottom: 50px;
+        }
+
+        .section-title p {
+            color: var(--accent2);
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+        }
+
+        .section-title span {
+            color: var(--accent2);
+        }
+
+        /* About */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .info-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .info-item {
+            padding: 25px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 18px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .info-item > span {
+            font-size: 1.7rem;
+        }
+
+        .info-item small {
+            display: block;
+            color: var(--muted);
+            margin-bottom: 5px;
+        }
+
+        .info-item strong {
+            font-size: 0.9rem;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card,
+        .hobby-card,
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 30px;
+            transition: 0.4s;
+        }
+
+        .skill-card:hover,
+        .hobby-card:hover,
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .skill-icon,
+        .hobby-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .skill-card h3,
+        .hobby-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .skill-card p,
+        .hobby-card p {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 0.85rem;
+        }
+
+        .skill-bar {
+            height: 5px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            margin-top: 25px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(
+                90deg,
+                var(--accent),
+                var(--accent2)
+            );
+        }
+
+        .teamwork {
+            width: 90%;
+        }
+
+        .time {
+            width: 85%;
+        }
+
+        .creativity {
+            width: 95%;
+        }
+
+        .webdev {
+            width: 75%;
+        }
+
+        /* Hobbies */
+        .hobbies-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        /* Goals */
+        .goals-container {
+            max-width: 800px;
+        }
+
+        .goal {
+            display: flex;
+            gap: 25px;
+            padding: 25px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .goal > span {
+            color: var(--accent2);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .goal h3 {
+            margin-bottom: 5px;
+        }
+
+        .goal p {
+            color: var(--muted);
+        }
+
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-text > p {
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            color: var(--muted);
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+        }
+
+        #contactForm {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #contactForm input,
+        #contactForm textarea {
+            width: 100%;
+            padding: 16px 18px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            outline: none;
+            background: var(--card);
+            color: white;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        #contactForm input:focus,
+        #contactForm textarea:focus {
+            border-color: var(--accent);
+        }
+
+        #contactForm button {
+            align-self: flex-start;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border);
+            background: rgba(0,0,0,0.2);
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .footer-text {
+            margin-top: 8px;
+        }
+
+        /* Scroll Animation */
+        .hidden {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+            transition: 0.8s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .skills-container,
+            .hobbies-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-bottom: 80px;
+            }
+
+            .intro {
+                margin: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .profile-container {
+                order: -1;
+                margin-top: 50px;
+            }
+
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .nav-links {
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                padding: 25px;
+                background: rgba(8, 8, 16, 0.95);
+            }
+
+            .nav-links.show-menu {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .skills-container,
+            .hobbies-container,
+            .info-box {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2.3rem;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-card {
+                width: 280px;
+            }
+
+            .profile-img {
+                width: 250px;
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">C<span>A</span>.</div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <button class="menu-btn" id="menuBtn">☰</button>
+
+        </nav>
+    </header>
+
+    <!-- Home -->
+    <section id="home" class="hero">
+
+        <div class="hero-text">
+
+            <p class="small-title">
+                WELCOME TO MY PORTFOLIO
+            </p>
+
+            <h1>
+                Hi, I'm <span>Charie</span>
+            </h1>
+
+            <h2 id="typingText">
+                Creative Student & Future Professional
+            </h2>
+
+            <p class="intro">
+                I am <strong>Charie M. Alegado</strong>, a creative and
+                motivated individual who enjoys learning new things.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#about" class="btn primary">
+                    Explore My Profile
+                </a>
+
+                <a href="#contact" class="btn secondary">
+                    Contact Me
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Profile -->
+        <div class="profile-container">
+
+            <div class="profile-glow"></div>
+
+            <div class="profile-card">
+
+                <img
+                    src="profile.jpg"
+                    alt="Charie M. Alegado"
+                    class="profile-img"
+                >
+
+                <div class="profile-info">
+                    <h3>Charie M. Alegado</h3>
+                    <p>Creative • Dedicated • Curious</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+
+        <div class="section-title">
+            <p>GET TO KNOW ME</p>
+            <h2>About <span>Me</span></h2>
+        </div>
+
+        <div class="about-container">
+
+            <div class="about-text">
+
+                <h3>A Little About Me</h3>
+
+                <p>
+                    I am a person who believes that every experience is
+                    an opportunity to learn and improve.
+                </p>
+
+                <p>
+                    I value teamwork, responsibility, creativity, and
+                    continuous learning. I always try to give my best
+                    in everything I do.
+                </p>
+
+                <p>
+                    Outside of school and work, I enjoy watching entertaining
+                    content, movies, and creative AI-generated shorts.
+                </p>
+
+            </div>
+
+            <div class="info-box">
+
+                <div class="info-item">
+                    <span>👤</span>
+                    <div>
+                        <small>Name</small>
+                        <strong>Charie M. Alegado</strong>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span>💡</span>
+                    <div>
+                        <small>Personality</small>
+                        <strong>Creative & Curious</strong>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span>🎯</span>
+                    <div>
+                        <small>Goal</small>
+                        <strong>Continuous Growth</strong>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span>🚀</span>
+                    <div>
+                        <small>Mindset</small>
+                        <strong>Learn • Create • Improve</strong>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+
+        <div class="section-title">
+            <p>WHAT I CAN DO</p>
+            <h2>My <span>Skills</span></h2>
+        </div>
+
+        <div class="skills-container">
+
+            <div class="skill-card">
+
+                <div class="skill-icon">🤝</div>
+
+                <h3>Teamwork</h3>
+
+                <p>
+                    I enjoy cooperating with others, sharing ideas,
+                    and contributing to a positive team environment.
+                </p>
+
+                <div class="skill-bar">
+                    <div class="skill-progress teamwork"></div>
+                </div>
+
+            </div>
+
+            <div class="skill-card">
+
+                <div class="skill-icon">⏰</div>
+
+                <h3>Time Management</h3>
+
+                <p>
+                    I try to organize my tasks, prioritize important
+                    activities, and complete work on time.
+                </p>
+
+                <div class="skill-bar">
+                    <div class="skill-progress time"></div>
+                </div>
+
+            </div>
+
+            <div class="skill-card">
+
+                <div class="skill-icon">🎨</div>
+
+                <h3>Creativity</h3>
+
+                <p>
+                    I like developing fresh ideas and finding creative
+                    approaches to projects and challenges.
+                </p>
+
+                <div class="skill-bar">
+                    <div class="skill-progress creativity"></div>
+                </div>
+
+            </div>
+
+            <div class="skill-card">
+
+                <div class="skill-icon">💻</div>
+
+                <h3>Basic Web Development</h3>
+
+                <p>
+                    I am interested in creating websites using
+                    HTML, CSS, and JavaScript.
+                </p>
+
+                <div class="skill-bar">
+                    <div class="skill-progress webdev"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Hobbies -->
+    <section id="hobbies" class="section">
+
+        <div class="section-title">
+            <p>WHAT I ENJOY</p>
+            <h2>My <span>Hobbies</span></h2>
+        </div>
+
+        <div class="hobbies-container">
+
+            <div class="hobby-card">
+                <div class="hobby-icon">🎬</div>
+
+                <h3>Watching C-Dramas</h3>
+
+                <p>
+                    I enjoy watching Chinese dramas, especially stories
+                    with interesting characters and plots.
+                </p>
+            </div>
+
+            <div class="hobby-card">
+                <div class="hobby-icon">🥋</div>
+
+                <h3>Korean Action Movies</h3>
+
+                <p>
+                    I enjoy Korean action movies because of their
+                    exciting stories and entertaining scenes.
+                </p>
+            </div>
+
+            <div class="hobby-card">
+                <div class="hobby-icon">🤖</div>
+
+                <h3>AI Shorts</h3>
+
+                <p>
+                    I like watching creative AI-generated short videos
+                    and discovering new ideas created with technology.
+                </p>
+            </div>
+
+            <div class="hobby-card">
+                <div class="hobby-icon">💡</div>
+
+                <h3>Exploring Ideas</h3>
+
+                <p>
+                    I enjoy discovering new concepts and learning
+                    about interesting things.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Goals -->
+    <section class="section goals-section">
+
+        <div class="section-title">
+            <p>LOOKING AHEAD</p>
+            <h2>My <span>Goals</span></h2>
+        </div>
+
+        <div class="goals-container">
+
+            <div class="goal">
+                <span>01</span>
+
+                <div>
+                    <h3>Keep Learning</h3>
+
+                    <p>
+                        Continue developing my knowledge and skills.
+                    </p>
+                </div>
+            </div>
+
+            <div class="goal">
+                <span>02</span>
+
+                <div>
+                    <h3>Build More Projects</h3>
+
+                    <p>
+                        Create projects that demonstrate my creativity
+                        and technical abilities.
+                    </p>
+                </div>
+            </div>
+
+            <div class="goal">
+                <span>03</span>
+
+                <div>
+                    <h3>Become Better</h3>
+
+                    <p>
+                        Improve myself personally, academically,
+                        and professionally.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact-section">
+
+        <div class="section-title">
+            <p>LET'S CONNECT</p>
+            <h2>Contact <span>Me</span></h2>
+        </div>
+
+        <div class="contact-container">
+
+            <div class="contact-text">
+
+                <h3>Let's Create Something Great!</h3>
+
+                <p>
+                    If you would like to connect with me, collaborate
+                    on a project, or simply say hello, feel free to
+                    send me a message.
+                </p>
+
+                <div class="contact-info">
+
+                    <p>
+                        📧 <strong>Email:</strong>
+                        calegado25@gmail.com
+                    </p>
+
+                    <p>
+                        📱 <strong>Phone:</strong>
+                        +63 997 381 6571
+                    </p>
+
+                    <p>
+                        📍 <strong>Location:</strong>
+                        Philippines
+                    </p>
+
+                </div>
+
+            </div>
+
+            <form id="contactForm">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Your Email"
+                    required
+                >
+
+                <textarea
+                    id="message"
+                    rows="6"
+                    placeholder="Your Message"
+                    required
+                ></textarea>
+
+                <button type="submit" class="btn primary">
+                    Send Message 🚀
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="footer-logo">
+            CA<span>.</span>
+        </div>
+
+        <p>
+            © <span id="year"></span>
+            Charie M. Alegado.
+            All Rights Reserved.
+        </p>
+
+        <p class="footer-text">
+            Designed with creativity & passion.
+        </p>
+
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+
+        // Mobile Menu
+        const menuBtn = document.getElementById("menuBtn");
+        const navLinks = document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", () => {
+
+            navLinks.classList.toggle("show-menu");
+
+            if (navLinks.classList.contains("show-menu")) {
+                menuBtn.textContent = "✕";
+            } else {
+                menuBtn.textContent = "☰";
+            }
+
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navLinks.classList.remove("show-menu");
+                menuBtn.textContent = "☰";
+
+            });
+
+        });
+
+        // Active Navigation
+        const sections = document.querySelectorAll("section");
+        const navigationLinks =
+            document.querySelectorAll(".nav-links a");
+
+        window.addEventListener("scroll", () => {
+
+            let currentSection = "";
+
+            sections.forEach(section => {
+
+                const sectionTop =
+                    section.offsetTop - 150;
+
+                const sectionHeight =
+                    section.clientHeight;
+
+                if (
+                    window.scrollY >= sectionTop &&
+                    window.scrollY <
+                    sectionTop + sectionHeight
+                ) {
+                    currentSection =
+                        section.getAttribute("id");
+                }
+
+            });
+
+            navigationLinks.forEach(link => {
+
+                link.classList.remove("active");
+
+                if (
+                    link.getAttribute("href") ===
+                    "#" + currentSection
+                ) {
+                    link.classList.add("active");
+                }
+
+            });
+
+        });
+
+        // Scroll Animation
+        const animatedElements =
+            document.querySelectorAll(
+                ".skill-card, .hobby-card, .info-item, .goal, .about-text"
+            );
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                            observer.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+        animatedElements.forEach(element => {
+
+            element.classList.add("hidden");
+
+            observer.observe(element);
+
+        });
+
+        // Contact Form
+        const contactForm =
+            document.getElementById("contactForm");
+
+        contactForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+                const name =
+                    document.getElementById("name").value;
+
+                alert(
+                    "Thank you, " +
+                    name +
+                    "! Your message has been received. 🚀"
+                );
+
+                contactForm.reset();
+
+            }
+        );
+
+        // Current Year
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        // Typing Effect
+        const subtitle =
+            document.getElementById("typingText");
+
+        const words = [
+            "Creative Student & Future Professional",
+            "Future Web Developer",
+            "Creative Thinker",
+            "Continuous Learner"
+        ];
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        function typingEffect() {
+
+            const currentWord =
+                words[wordIndex];
+
+            if (!deleting) {
+
+                subtitle.textContent =
+                    currentWord.substring(
+                        0,
+                        charIndex + 1
+                    );
+
+                charIndex++;
+
+                if (
+                    charIndex ===
+                    currentWord.length
+                ) {
+
+                    deleting = true;
+
+                    setTimeout(
+                        typingEffect,
+                        1800
+                    );
+
+                    return;
+                }
+
+            } else {
+
+                subtitle.textContent =
+                    currentWord.substring(
+                        0,
+                        charIndex - 1
+                    );
+
+                charIndex--;
+
+                if (charIndex === 0) {
+
+                    deleting = false;
+
+                    wordIndex =
+                        (wordIndex + 1) %
+                        words.length;
+
+                }
+
+            }
+
+            setTimeout(
+                typingEffect,
+                deleting ? 45 : 80
+            );
+        }
+
+        typingEffect();
+
+    </script>
+
+</body>
+</html>
+
